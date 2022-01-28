@@ -62,6 +62,7 @@ func DeployGrafanaInstance(namespace, labelName, labelValue string) error {
 	}
 
 	// Patch Grafana CR with image based on digest to allow image mirroring. Can be removed when Garafana image is moved out of docker.io registry.
+    /*
 	if deployment, err := GetDeploymentWaiting(namespace, defaultGrafanaDeployment, 2); err != nil {
 		return fmt.Errorf("Error while waiting for Grafana Deployment to become available: %v ", err)
 	} else if imageShaTag, imageEntryPresent := grafanaImages[deployment.Spec.Template.Spec.Containers[0].Image]; imageEntryPresent {
@@ -74,6 +75,7 @@ func DeployGrafanaInstance(namespace, labelName, labelValue string) error {
 	} else {
 		return fmt.Errorf("Grafana image %s wasn't found in the list of Grafana images with defined digest. In case this is new Grafana image please add it into the list with proper digest", deployment.Spec.Template.Spec.Containers[0].Image)
 	}
+    */
 
 	if IsOpenshift() {
 		// Grafana creates HTTPS routes by default, need to create HTTP route manually
